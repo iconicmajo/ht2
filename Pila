@@ -1,0 +1,57 @@
+/*
+ * @uthor Majo!
+ * Estructura de datos
+ * Gerardo Mendez 18239
+ * Ma. Jose Castro 181202
+ */
+package stack;
+
+import java.util.Vector;
+
+
+public class Pila<E> implements iPila<E> 
+{
+    
+    private Vector<E> vector;
+
+    public Pila() {
+        this.vector = new Vector<E>();
+    }
+    
+    @Override
+    public void push(E item) 
+    {
+        vector.add(item);
+    }
+
+    @Override
+    public E pop() 
+    {
+        E res;
+        res = vector.remove(size()-1);
+        return res; 
+    }
+
+    @Override
+    public E peek() 
+    {
+        E peek;
+        peek = vector.get(size()-1);
+        return peek;
+    }
+
+    @Override
+    public boolean empty() 
+    {
+        return vector.isEmpty();
+    }
+
+    @Override
+    public int size() 
+    {
+        int size;
+        size = vector.size();
+        return size;
+    }
+    
+}
