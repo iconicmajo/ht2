@@ -1,0 +1,82 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Gerardo
+ * Hoja 2
+ * Majo Castro 1981202
+ * Gerardo Mendez 18239
+ * 1/02/2019
+ */
+public class Stack 
+{
+
+    /**
+     * @param args the command line arguments
+     * @throws java.io.IOException
+     */
+    public static void main(String[] args) throws IOException 
+    {   
+        iPila<String> pila = new Pila<>();
+        iCalculadora calculadora = new Calculadora();
+        ArrayList<String> array = new ArrayList<>();
+        
+        Scanner read = new Scanner(new File("doc.txt"));
+        read.useDelimiter(" ");
+        String data;
+        
+        while(read.hasNext())
+        {
+            data = read.next();
+            array.add(data);
+        }
+        
+        for(int i = 0; i < array.size(); i++){
+            System.out.println(array.get(i));
+        }
+        
+        for(int i = 0; i < array.size(); i++)
+        {
+            pila.push(array.get(array.size()-i-1));
+        }
+       
+        while(!pila.empty())
+        {
+            double a, b;
+            double c = 0;
+            String d, e;
+            a = Double.parseDouble(pila.pop());
+            b = Double.parseDouble(pila.pop());
+            d = pila.pop();
+            
+            if(d.equals("+"))
+            {
+               c = calculadora.sumar(a, b);
+            }
+            
+            if(d.equals("-"))
+            {
+               c = calculadora.restar(a, b);
+            }
+            
+            if(d.equals("*"))
+            {
+               c = calculadora.multiplicar(a, b);
+            }
+            
+            if(d.equals("/"))
+            {
+               c = calculadora.dividir(a, b);
+            }
+            
+            e = String.valueOf(c);
+            
+            if(pila.size() > 0){
+                pila.push(e);
+            }
+        }
+    }
+}
