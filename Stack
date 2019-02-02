@@ -1,5 +1,4 @@
 /**
- *
  * @author Gerardo
  * Hoja 2
  * Majo Castro 181202
@@ -56,19 +55,24 @@ public class Stack
                     c = calculadora.sumar(a, b);
                 }
             
-                if(d.equals("-"))
+                else if(d.equals("-"))
                 {
                     c = calculadora.restar(a, b);
                 }
                 
-                if(d.equals("*"))
+                else if(d.equals("*"))
                 {
                     c = calculadora.multiplicar(a, b);
                 }
                 
-                if(d.equals("/"))
+                else if(d.equals("/"))
                 {
                     c = calculadora.dividir(a, b);
+                }
+                
+                else
+                {
+                    throw new IllegalArgumentException();
                 }
             
                 e = String.valueOf(c);
@@ -88,7 +92,7 @@ public class Stack
         }
         catch(NumberFormatException e){
             System.out.println("");
-            System.out.println("Hay dos simbolos o dos numeros juntos en el archivo de texto ingresado");
+            System.out.println("Hay dos simbolos juntos o dos numeros juntos (ademas de los primeros dos) en el archivo de texto ingresado");
             System.out.println("Por favor corregir para que el programa pueda realizar los calculos deseados");
             System.out.println("");
             //System.out.println("El archivo de texto que se utilizo no cumple con las condiciones");
@@ -96,6 +100,13 @@ public class Stack
         catch(ArrayIndexOutOfBoundsException e){
             System.out.println("");
             System.out.println("El archivo de texto utilizado para el programa no termina en un simbolo de operacion");
+            System.out.println("Por favor corregir para que el programa pueda realizar los calculos deseados");
+            System.out.println("");
+        }
+        catch(IllegalArgumentException e)
+        {
+            System.out.println("");
+            System.out.println("El archivo de texto incluye simbolos que no corresponden a operaciones matematicas");
             System.out.println("Por favor corregir para que el programa pueda realizar los calculos deseados");
             System.out.println("");
         }
